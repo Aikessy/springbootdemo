@@ -1,5 +1,6 @@
 package com.heikki.springbootdemo.controller;
 
+import com.heikki.springbootdemo.common.RespJson;
 import com.heikki.springbootdemo.mapper.UserMapper;
 import com.heikki.springbootdemo.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class UserController {
 
     @RequestMapping("/getAllUser")
     @ResponseBody
-    public List<User> getAllUser(){
-        return userMapper.findAll();
+    public RespJson getAllUser(){
+        return RespJson.success(userMapper.findAll());
     }
 }
