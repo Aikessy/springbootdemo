@@ -1,13 +1,15 @@
 package com.heikki.springbootdemo.exception;
 
+import com.heikki.springbootdemo.common.RespJson;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@ControllerAdvice
+@RestControllerAdvice
 public class GlobalExceptionHandler {
     public static final String ERROR_VIEW = "error";
 
@@ -15,11 +17,18 @@ public class GlobalExceptionHandler {
     public Object errorHandler(HttpServletRequest request, HttpServletResponse response,Exception e) {
         e.printStackTrace();
 
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("exception",e);
-        mav.addObject("url",request.getRequestURL());
-        mav.setViewName(ERROR_VIEW);
+        if(isAjaxRequest(request)){
+            return RespJson.error(e.getMessage());
+        }else{
+            ModelAndView mav = new ModelAndView();
+            mav.addObject("exception",e);
+            mav.addObject("url",request.getRequestURL());
+            mav.setViewName(ERROR_VIEW);
+            return mav;
+        }
+    }
 
-        return mav;
+    public static boolean isAjaxRequest(HttpServletRequest request){
+        return request.getHeader("X-Requested-With") != null && "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
     }
 }

@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Springboot demo</title>
-    <script th:src="@{/static/js/test.js}"></script>
-</head>
-<body>
+﻿<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <meta charset="UTF-8" /> 
+  <title>spring boot demo</title>
+  <link rel="stylesheet" href="../static/css/reset.css" />
+  <link rel="stylesheet" href="../static/css/style.css" media="screen" type="text/css" />
 
-</body>
+     <script src="../static/js/jquery-3.3.1.min.js"></script>
+     <script src="../static/js/index.js"></script>
+ </head>
+ <body> 
+  <div id="window" style=""> 
+   <div class="page page-front"> 
+    <div class="page-content"> 
+     <div class="input-row"> 
+      <label class="label fadeIn">用户名</label> 
+      <input id="username" type="text" data-fyll="用户名" class="input fadeIn delay1" /> 
+     </div> 
+     <div class="input-row"> 
+      <label class="label fadeIn delay2">密码</label> 
+      <input id="password" type="password" data-fyll="密码" class="input fadeIn delay3" /> 
+     </div> 
+     <div class="input-row perspective"> 
+      <button id="submit" class="button load-btn fadeIn delay4"> <span class="default"><i class="ion-arrow-right-b"></i>登录</span> 
+       <div class="load-state"> 
+        <div class="ball"></div> 
+        <div class="ball"></div> 
+        <div class="ball"></div> 
+       </div> </button> 
+     </div> 
+    </div> 
+   </div> 
+  </div>
+ </body>
 </html>

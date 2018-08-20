@@ -11,11 +11,17 @@ public class RespJson {
     private String msg;
     private Object data;
 
+    public static RespJson error(String msg){
+        return error(msg,null);
+    }
     public static RespJson error(Object data){
         return error("错误",data);
     }
     public static RespJson error(String msg,Object data){
         return response(500,msg,data);
+    }
+    public static RespJson success(){
+        return success(null);
     }
     public static RespJson success(Object data){
         return success("成功",data);
